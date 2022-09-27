@@ -50,8 +50,11 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger
     if (this.Form.valid) {
-
+      const userData = this.signUp.find(item => {
+        return (item.email && item.password === this.Form.value)
+      })
     } else {
 
     }
