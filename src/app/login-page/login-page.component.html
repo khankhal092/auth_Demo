@@ -1,0 +1,28 @@
+<div class="mt-5 container text-center">
+    <h1>{{loginMode?'Sign In':'Sign Up'}} Form</h1>
+    <div class="d-flex justify-content-center mt-4 align-items-center">
+        <form>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">
+                    <i class="fa fa-envelope"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Enter Email">
+                <!-- <small class="form-text w-100 d-flex text-danger">Please Enter Email</small> -->
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">
+                    <i class="fa fa-lock"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Enter Password">
+                <!-- <small class="form-text w-100 d-flex text-danger">Please Enter Password</small> -->
+            </div>
+            <div class="d-grid mt-2">
+                <button type="submit" class="btn btn-block btn-outline-primary">{{loginMode?'Sign In':
+                    'Create Account'}}</button>
+            </div>
+            <p class="d-flex mt-3 m-0">{{loginMode ? 'Don`t have account?' : 'Already have account?' }} <a href="#"
+                    (click)="onSwitch()">{{loginMode ? 'Create one' : 'Sign In'}}</a></p>
+            <a class="d-flex" href="#">Forgot Password</a>
+        </form>
+    </div>
+</div>
