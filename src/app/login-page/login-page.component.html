@@ -1,28 +1,82 @@
+<!-- SignIn  -->
 <div class="mt-5 container text-center">
-    <h1>{{loginMode?'Sign In':'Sign Up'}} Form</h1>
+    <h1>Sign In Form</h1>
     <div class="d-flex justify-content-center mt-4 align-items-center">
-        <form>
+        <form [formGroup]="Form" (ngSubmit)="onSubmit()">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">
                     <i class="fa fa-envelope"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="Enter Email">
-                <!-- <small class="form-text w-100 d-flex text-danger">Please Enter Email</small> -->
+                <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
+                <small *ngIf="!Form.get('email')?.valid &&( Form.get('email')?.touched)"
+                    class="form-text w-100 d-flex text-danger">Please Enter
+                    Email</small>
+                <!-- <small *ngIf="Form.get('email')?.invalid && Form.get('email')?.dirty"
+                    class="form-text w-100 d-flex text-danger">Please
+                    Invalid
+                    Email</small> -->
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">
                     <i class="fa fa-lock"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="Enter Password">
-                <!-- <small class="form-text w-100 d-flex text-danger">Please Enter Password</small> -->
+                <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                <small *ngIf="!Form.get('password')?.valid && ( Form.get('password')?.touched)"
+                    class="form-text w-100 d-flex text-danger">Please Enter Password</small>
             </div>
             <div class="d-grid mt-2">
-                <button type="submit" class="btn btn-block btn-outline-primary">{{loginMode?'Sign In':
-                    'Create Account'}}</button>
+                <button type="submit" class="btn btn-block btn-outline-primary">Sign In</button>
             </div>
-            <p class="d-flex mt-3 m-0">{{loginMode ? 'Don`t have account?' : 'Already have account?' }} <a href="#"
-                    (click)="onSwitch()">{{loginMode ? 'Create one' : 'Sign In'}}</a></p>
-            <a class="d-flex" href="#">Forgot Password</a>
+            <p class="d-flex mt-3 m-0">Don`t have account?
+                <a>Create one</a>
+            </p>
+            <a class="d-flex">Forgot Password</a>
         </form>
     </div>
 </div>
+
+<!-- SignUp -->
+<!-- <div class="mt-5 container text-center">
+    <h1>Sign Up Form</h1>
+    <div class="d-flex justify-content-center mt-4 align-items-center">
+        <form [formGroup]="Form" (ngSubmit)="onSubmit()">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">
+                    <i class="fa fa-envelope"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
+                <small *ngIf="!Form.get('email')?.valid &&( Form.get('email')?.touched)"
+                    class="form-text w-100 d-flex text-danger">Please Enter
+                    Email</small>
+              
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">
+                    <i class="fa fa-lock"></i>
+                </span>
+                <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                <small *ngIf="!Form.get('password')?.valid && ( Form.get('password')?.touched)"
+                    class="form-text w-100 d-flex text-danger">Please Enter Password</small>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">
+                    <i class="fa fa-lock"></i>
+                </span>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" formControlName="role">
+                    <option value="" selected>Open this select menu</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <small *ngIf="!Form.get('role')?.valid &&( Form.get('role')?.touched)"
+                    class="form-text w-100 d-flex text-danger">Please Select</small>
+            </div>
+            <div class="d-grid mt-2">
+                <button type="submit" class="btn btn-block btn-outline-primary">Create Account</button>
+            </div>
+            <p class="d-flex mt-3 m-0">Already have account?
+                <a>Create one</a>
+            </p>
+            <a class="d-flex">Forgot Password</a>
+        </form>
+    </div>
+</div> -->

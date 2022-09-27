@@ -1,6 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+// const data = [
+//   {
+//     email: 'khankhal@gmail.com',
+//     password: 'khankhal@001',
+//     role: 'admin'
+//   },
+//   {
+//     email: 'dhaval@gmail.com',
+//     password: 'dhaval@001',
+//     role: 'user'
+//   },
+//   {
+//     email: 'jay@gmail.com',
+//     password: 'jay@001',
+//     role: 'admin'
+//   },
+//   {
+//     email: 'nikuj@gmail.com',
+//     password: 'nikuj@001',
+//     role: 'user'
+//   }
+// ]
 
 @Component({
   selector: 'app-login-page',
@@ -9,17 +31,29 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class LoginPageComponent implements OnInit {
 
-  loginMode: boolean = true;
+  signUp: any[] = [];
 
-  Form: FormGroup | undefined
+  Form!: FormGroup;
 
-  constructor(public fb: FormBuilder) { }
-
-  ngOnInit(): void {
+  constructor(public fb: FormBuilder) {
+    this.signUp = JSON.parse(localStorage.getItem('signUpData') || '[]');
+    // localStorage.setItem('signUpData', JSON.stringify(data));
+    console.log(this.signUp);
 
   }
 
-  onSwitch() {
-    this.loginMode = !this.loginMode
+  ngOnInit(): void {
+    this.Form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    })
+  }
+
+  onSubmit() {
+    if (this.Form.valid) {
+
+    } else {
+
+    }
   }
 }
